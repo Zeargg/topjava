@@ -7,12 +7,12 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.Month;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class MealsUtil {
+
+
     public static void main(String[] args) {
         List<Meal> mealList = Arrays.asList(
                 new Meal(LocalDateTime.of(2015, Month.MAY, 30,10,0), "Завтрак", 500),
@@ -30,10 +30,16 @@ public class MealsUtil {
         Map<LocalDate, Integer> map = mealList.stream().
                 collect(Collectors.groupingBy(Meal::getDate, Collectors.summingInt(Meal::getCalories)));
 
+
         List<MealWithExceed> list = mealList.stream()
                 .filter(m -> TimeUtil.isBetween(m.getDateTime().toLocalTime(), startTime, endTime))
-                .map(m -> new MealWithExceed(m.getDateTime(), m.getDescription(), m.getCalories(), (map.get(m.getDateTime().toLocalDate())) > caloriesPerDay))
+                .map(m -> new MealWithExceed(m.getId(), m.getDateTime(), m.getDescription(), m.getCalories(), (map.get(m.getDateTime().toLocalDate())) > caloriesPerDay))
                 .collect(Collectors.toList());
         return list;
     }
+
+    public static List<MealWithExceed> getMealsWithExceeded(List<Meal> mealList, int caloriesPerDay){
+        return getFilteredWithExceeded(mealList, LocalTime.MIN, LocalTime.MAX, caloriesPerDay);
+    }
+
 }
