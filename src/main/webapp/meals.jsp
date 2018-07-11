@@ -22,6 +22,24 @@
     <h2>Meals</h2>
     <a href="meals?action=create">Add Meal</a>
     <hr/>
+    <form action="meals?action=filter" method="post">
+        <table>
+            <tr>
+                <td style="padding-left: 53px">От</td>
+                <td>До</td>
+            </tr>
+            <tr>
+                <td>Дата<input type="date" name="minDate" style="margin-left: 20px"></td>
+                <td><input type="date" name="maxDate"></td>
+            </tr>
+            <tr>
+                <td>Время<input type="time" name="minTime" style="margin-left: 10px"></td>
+                <td><input type="time" name="maxTime"></td>
+            </tr>
+            <tr>
+                <td style="padding-top: 10px"><input type="submit" value="Фильтровать"></td>
+        </table>
+    </form>
     <table border="1" cellpadding="8" cellspacing="0">
         <thead>
         <tr>
@@ -33,7 +51,7 @@
         </tr>
         </thead>
         <c:forEach items="${meals}" var="meal">
-            <jsp:useBean id="meal" scope="page" type="ru.javawebinar.topjava.model.MealWithExceed"/>
+            <jsp:useBean id="meal" scope="page" type="ru.javawebinar.topjava.to.MealWithExceed"/>
             <tr class="${meal.exceed ? 'exceeded' : 'normal'}">
                 <td>
                         <%--${meal.dateTime.toLocalDate()} ${meal.dateTime.toLocalTime()}--%>
