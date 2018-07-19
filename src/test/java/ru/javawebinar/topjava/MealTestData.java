@@ -27,6 +27,7 @@ public class MealTestData {
         m6.setId(6);
     }
 
+
     public static void assertMatch(Meal actual, Meal expected) {
         assertThat(actual).isEqualTo(expected);
     }
