@@ -1,4 +1,5 @@
 DROP TABLE IF EXISTS user_roles;
+DROP TABLE IF EXISTS meals;
 DROP TABLE IF EXISTS users;
 
 CREATE TABLE users
@@ -21,3 +22,14 @@ CREATE TABLE user_roles
   CONSTRAINT user_roles_idx UNIQUE (user_id, role),
   FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
 );
+
+CREATE TABLE meals (
+  id          INT PRIMARY KEY AUTO_INCREMENT,
+  dateTime    DATETIME NOT NULL,
+  description VARCHAR(50) NOT NULL,
+  calories    INT NOT NULL,
+  user_id     INT NOT NULL,
+  CONSTRAINT user_dateTime_meals UNIQUE (user_id, dateTime),
+  FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
+);
+ALTER TABLE meals AUTO_INCREMENT = 1;

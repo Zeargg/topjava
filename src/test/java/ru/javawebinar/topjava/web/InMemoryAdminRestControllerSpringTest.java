@@ -22,9 +22,6 @@ import static ru.javawebinar.topjava.UserTestData.ADMIN;
 public class InMemoryAdminRestControllerSpringTest {
 
     @Autowired
-    private AdminRestController controller;
-
-    @Autowired
     private InMemoryUserRepositoryImpl repository;
 
     @Before
@@ -34,14 +31,14 @@ public class InMemoryAdminRestControllerSpringTest {
 
     @Test
     public void testDelete() throws Exception {
-        controller.delete(UserTestData.USER_ID);
-        Collection<User> users = controller.getAll();
+        repository.delete(UserTestData.USER_ID);
+        Collection<User> users = repository.getAll();
         Assert.assertEquals(users.size(), 1);
         Assert.assertEquals(users.iterator().next(), ADMIN);
     }
 
     @Test(expected = NotFoundException.class)
     public void testDeleteNotFound() throws Exception {
-        controller.delete(10);
+        repository.delete(10);
     }
 }
