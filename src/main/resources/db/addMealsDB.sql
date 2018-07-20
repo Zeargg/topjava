@@ -1,7 +1,7 @@
 DELETE FROM meals;
 ALTER TABLE meals AUTO_INCREMENT = 1;
 
-INSERT INTO meals (dateTime, description, calories, user_id) VALUES
+INSERT INTO meals (date_time, description, calories, user_id) VALUES
   ('2015-05-30 10:00:00', 'Завтрак', 500, 100000),
   ('2015-05-30 13:00:00', 'Обед', 1000, 100000),
   ('2015-05-30 20:00:00', 'Ужин', 500, 100000),

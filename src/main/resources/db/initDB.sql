@@ -25,11 +25,11 @@ CREATE TABLE user_roles
 
 CREATE TABLE meals (
   id          INT PRIMARY KEY AUTO_INCREMENT,
-  dateTime    DATETIME NOT NULL,
+  date_time    DATETIME NOT NULL,
   description VARCHAR(50) NOT NULL,
   calories    INT NOT NULL,
   user_id     INT NOT NULL,
-  CONSTRAINT user_dateTime_meals UNIQUE (user_id, dateTime),
+  CONSTRAINT user_dateTime_meals UNIQUE (user_id, date_time),
   FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
 );
 ALTER TABLE meals AUTO_INCREMENT = 1;
