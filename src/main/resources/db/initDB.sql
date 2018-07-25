@@ -25,7 +25,7 @@ CREATE TABLE user_roles
 
 CREATE TABLE meals (
   id          INT PRIMARY KEY AUTO_INCREMENT,
-  date_time    DATETIME NOT NULL,
+  date_time    TIMESTAMP NOT NULL,
   description VARCHAR(50) NOT NULL,
   calories    INT NOT NULL,
   user_id     INT NOT NULL,
