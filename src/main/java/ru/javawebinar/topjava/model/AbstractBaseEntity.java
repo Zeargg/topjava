@@ -13,6 +13,7 @@ public abstract class AbstractBaseEntity implements Persistable<Integer> {
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
+    //    @Column(name = "id", unique = true, nullable = false, columnDefinition = "integer default nextval('global_seq')")
     protected Integer id;
 
     protected AbstractBaseEntity() {
